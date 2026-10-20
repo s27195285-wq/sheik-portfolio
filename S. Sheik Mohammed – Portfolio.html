@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>S. Sheik Mohammed — Cyber Forensics Portfolio</title>
+<meta name="description" content="S. Sheik Mohammed — Cybersecurity student, cyber forensics enthusiast, CTF player with Alpha Exploiters.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F4F9;--surface:#FFFFFF;--text:#141A2E;--muted:#5A647F;--line:#D3D9E8;--signal:#8F5400;--signal2:#1F6F5C;
+  --grid:rgba(20,26,46,.07);--glow:rgba(143,84,0,.12);
+  --sans:"Space Grotesk",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0D1220;--surface:#141A2E;--text:#E6E9F2;--muted:#8F9ABB;--line:#2A3356;--signal:#FFC857;--signal2:#4FD6B5;--grid:rgba(143,154,187,.10);--glow:rgba(255,200,87,.08);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0D1220;--surface:#141A2E;--text:#E6E9F2;--muted:#8F9ABB;--line:#2A3356;--signal:#FFC857;--signal2:#4FD6B5;--grid:rgba(143,154,187,.10);--glow:rgba(255,200,87,.08);color-scheme:dark}
+html{scroll-padding-top:calc(4rem + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:radial-gradient(ellipse 70% 45% at 85% 0%,var(--glow),transparent 70%),linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:100% 100%,32px 32px,32px 32px;
+  -webkit-mask-image:linear-gradient(#000 0%,#000 40%,transparent 100%);mask-image:linear-gradient(#000 0%,#000 40%,transparent 100%)}
+a{color:var(--signal);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--signal);outline-offset:3px}
+.wrap{max-width:52rem;margin:0 auto;padding:0 1.25rem}
+nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(10px);background:color-mix(in srgb, var(--bg) 82%, transparent);border-bottom:1px solid var(--line)}
+nav::before{content:"";position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:inherit;z-index:11}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:calc(.9rem + env(safe-area-inset-top,0px));padding-bottom:.9rem;gap:1rem;flex-wrap:wrap}
+.brand{font-family:var(--mono);font-weight:600;font-size:.95rem;color:var(--text)}
+.brand span{color:var(--signal)}
+.navlinks{display:flex;gap:1.25rem;flex-wrap:wrap;font-family:var(--mono);font-size:.82rem}
+.navlinks a{color:var(--muted)}
+.navlinks a:hover{color:var(--text)}
+section{padding:4.5rem 0 0;scroll-margin-top:4rem}
+.tag{font-family:var(--mono);font-size:.78rem;color:var(--signal);letter-spacing:.04em;margin:0 0 .6rem}
+h2{font-size:1.6rem;margin:0 0 1.4rem;font-weight:700;letter-spacing:-.01em}
+p{margin:0 0 1rem;max-width:64ch;color:var(--text)}
+.muted{color:var(--muted)}
+/* hero */
+.hero{padding:4.5rem 0 1rem}
+.badge{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.74rem;color:var(--signal2);border:1px solid var(--line);background:var(--surface);padding:.35rem .7rem;border-radius:999px;margin-bottom:1.5rem}
+.badge::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--signal2);box-shadow:0 0 0 3px color-mix(in srgb, var(--signal2) 25%, transparent)}
+.hero h1{font-family:var(--mono);font-weight:500;font-size:clamp(2rem,7vw,3.4rem);line-height:1.1;margin:0 0 .6rem;letter-spacing:-.02em;cursor:pointer;word-break:break-word}
+.hex{font-family:var(--mono);font-size:.76rem;color:var(--muted);margin:0 0 1.2rem;word-break:break-all}
+.role{font-size:1.2rem;max-width:40ch;color:var(--muted)}
+.links{display:flex;flex-wrap:wrap;gap:.7rem;margin:1.5rem 0 2.5rem}
+.links a{border:1px solid var(--line);background:var(--surface);color:var(--text);padding:.5rem 1rem;border-radius:6px;font-weight:500;font-size:.92rem}
+.links a:hover{border-color:var(--signal);text-decoration:none}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:1rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.2rem 0;margin-bottom:1rem}
+.stats div b{display:block;font-family:var(--mono);font-size:1.5rem;color:var(--signal)}
+.stats div span{font-size:.82rem;color:var(--muted)}
+.sig{margin:0 0 2rem;padding:.9rem 1.1rem;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--signal);border-radius:6px;font-family:var(--mono);font-size:.76rem;line-height:1.7;color:var(--muted);overflow-x:auto}
+.sig b{color:var(--text);font-weight:500}
+.sig-cap{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin:-1.5rem 0 2rem}
+/* grids */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1.25rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.3rem}
+.card h3{margin:0 0 .4rem;font-size:1.05rem}
+.card p{margin:0;color:var(--muted);font-size:.92rem}
+.pillrow{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.7rem}
+.pill{font-family:var(--mono);font-size:.74rem;background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:.2rem .55rem;color:var(--muted)}
+/* community */
+.community{display:flex;align-items:flex-start;gap:1rem;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--signal2);border-radius:10px;padding:1.2rem 1.3rem;margin-bottom:1.5rem}
+.community .mark{font-family:var(--mono);color:var(--signal2);font-size:1.3rem;line-height:1}
+/* ctf */
+.res{list-style:none;margin:0;padding:0}
+.res li{display:flex;gap:1rem;align-items:flex-start;border-top:1px solid var(--line);padding:1.1rem 0}
+.res li:first-child{border-top:none}
+.rank{font-family:var(--mono);font-size:1.3rem;color:var(--signal);min-width:3rem}
+.res strong{display:block;font-size:1.02rem}
+.res span{font-size:.86rem;color:var(--muted)}
+/* certs */
+.cert{display:flex;justify-content:space-between;align-items:center;gap:1rem;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:.85rem 1.2rem;margin-bottom:.7rem}
+.cert strong{display:block;font-size:.96rem}
+.cert span{font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+footer{max-width:52rem;margin:3rem auto 0;padding:1.5rem 1.25rem 2.5rem;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <span class="brand">SM<span>_</span>PORTFOLIO</span>
+    <div class="navlinks">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#ctf">CTF</a><a href="#certs">Certs</a><a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <header class="hero" id="home">
+    <div class="badge">OPEN TO CYBERSECURITY OPPORTUNITIES</div>
+    <h1 id="name" tabindex="0" role="button" aria-label="S. Sheik Mohammed. Activate to replay the decode animation.">S. Sheik Mohammed</h1>
+    <p class="hex" id="hex" aria-hidden="true"></p>
+    <p class="role">B.Sc IT (Cybersecurity) student · Defence aspirant · Cyber forensics enthusiast · CTF player with <strong>Alpha Exploiters</strong></p>
+    <div class="links">
+      <a href="https://github.com/s27195285-wq">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/sheik-mohammed-s-2825163aa/">LinkedIn ↗</a>
+      <a href="mailto:s27195285@gmail.com">Email ↗</a>
+      <a href="https://app.hackdemy.com/user/profile">Hackdemy ↗</a>
+    </div>
+    <div class="stats">
+      <div><b>03</b><span>CTF placements</span></div>
+      <div><b>6th</b><span>Zyrofest CTF, with Alpha Exploiters</span></div>
+      <div><b>02</b><span>Cisco certifications</span></div>
+    </div>
+    <pre class="sig" aria-hidden="true"><b>offset    hex                        ascii</b>
+00000000  89 50 4e 47 0d 0a 1a 0a    .PNG....
+00000008  ff d8 ff e0 00 10 4a 46    ......JF
+00000010  25 50 44 46 2d 31 2e 37    %PDF-1.7
+00000018  50 4b 03 04 14 00 00 00    PK......</pre>
+    <p class="sig-cap">File signatures (magic bytes) for PNG, JPEG, PDF and ZIP — the first thing a forensic analyst checks.</p>
+  </header>
+
+  <section id="about">
+    <p class="tag">01 / ABOUT</p>
+    <h2>Curious about evidence. Built for forensics.</h2>
+    <p>I'm an undergraduate student of <strong>B.Sc IT (Cybersecurity)</strong>. I'm a defence aspirant and a cybersecurity enthusiast, and my chosen specialisation is <strong>cyber forensics</strong>.</p>
+    <p class="muted">I play CTFs, practise foundational security tooling, and document what I learn. This page is a snapshot of that work, kept honest rather than overstated.</p>
+    <div class="community">
+      <span class="mark">◎</span>
+      <div><strong>Community — Alpha Exploiters</strong><p class="muted" style="margin:.3rem 0 0">I'm part of Alpha Exploiters, a CTF team of friends who compete and learn together. Competing as a team, we placed <strong>6th at Zyrofest CTF</strong>.</p></div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <p class="tag">02 / TECHNICAL TOOLKIT</p>
+    <h2>Skills I'm building</h2>
+    <div class="grid2">
+      <div class="card"><h3>Strongest areas</h3><p>Where I spend most of my CTF time.</p>
+        <div class="pillrow"><span class="pill">Digital Forensics</span><span class="pill">Cryptography</span><span class="pill">OSINT</span><span class="pill">Steganography</span></div>
+      </div>
+      <div class="card"><h3>Foundations in progress</h3><p>Early-stage, kept honest as basics.</p>
+        <div class="pillrow"><span class="pill">Python (basic)</span><span class="pill">Networking (basic)</span><span class="pill">Linux (basic)</span><span class="pill">Ethical hacking concepts</span><span class="pill">Nmap (basic)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ctf">
+    <p class="tag">03 / CTF & COMPETITIONS</p>
+    <h2>Compete. Learn. Improve.</h2>
+    <ul class="res">
+      <li><span class="rank">06</span><div><strong>Zyrofest CTF</strong><span>6th place — competed as part of Alpha Exploiters</span></div></li>
+      <li><span class="rank">48</span><div><strong>Cybertron CTF</strong><span>48th place</span></div></li>
+      <li><span class="rank">51</span><div><strong>Cyro Vault</strong><span>51st place</span></div></li>
+    </ul>
+    <p class="muted" style="margin-top:1rem">Challenge-level writeups will be added here as they're published. More practice is logged on <a href="https://app.hackdemy.com/user/profile">Hackdemy</a>.</p>
+  </section>
+
+  <section id="certs">
+    <p class="tag">04 / CERTIFICATIONS</p>
+    <h2>Credentials</h2>
+    <div class="cert"><strong>Cisco — Cybersecurity Fundamentals</strong><span>COMPLETED</span></div>
+    <div class="cert"><strong>Cisco — Networking Fundamentals</strong><span>COMPLETED</span></div>
+  </section>
+
+  <section id="contact">
+    <p class="tag">05 / CONTACT</p>
+    <h2>Let's connect</h2>
+    <p class="muted">Open to cybersecurity internships, forensics-focused roles, and opportunities to learn and contribute alongside a team.</p>
+    <div class="links">
+      <a href="mailto:s27195285@gmail.com">Email me ↗</a>
+      <a href="https://github.com/s27195285-wq">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/sheik-mohammed-s-2825163aa/">LinkedIn ↗</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>Designed and documented by S. Sheik Mohammed.</span>
+  <span>© 2026</span>
+</footer>
+
+<script>
+(function(){
+  var el=document.getElementById('name'), hexEl=document.getElementById('hex');
+  var real=el.textContent, glyphs='0123456789abcdef#$%&*';
+  function toHex(s){return Array.from(new TextEncoder().encode(s)).map(function(b){return b.toString(16).padStart(2,'0')}).join(' ')}
+  hexEl.textContent='hex: '+toHex(real);
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches, timer;
+  function decode(){
+    if(reduce){el.textContent=real;return}
+    var start=performance.now(), dur=1200;
+    clearInterval(timer);
+    timer=setInterval(function(){
+      var p=Math.min(1,(performance.now()-start)/dur), fixed=Math.floor(p*real.length), out='';
+      for(var i=0;i<real.length;i++){out+=(i<fixed||real[i]===' '||real[i]==='.')?real[i]:glyphs[Math.floor(Math.random()*glyphs.length)];}
+      el.textContent=out;
+      if(p>=1){clearInterval(timer);el.textContent=real}
+    },40);
+  }
+  el.addEventListener('click',decode);
+  el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();decode()}});
+  decode();
+})();
+</script>
+</body>
+</html>
